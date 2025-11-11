@@ -1,0 +1,55 @@
+<!-- beterano-web-chrome/components/dock/dock.html -->
+<div id="bm-dock-root" data-variant="inline">
+  <nav class="mobile-dock" aria-label="Beterano dock">
+    <!-- Calendario -->
+    <button class="btn dock-btn" data-dock-btn data-action="calendar" aria-label="Calendario">
+      <svg class="dock-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="16" rx="3" />
+        <path d="M16 3v4M8 3v4M3 11h18" />
+      </svg>
+    </button>
+
+    <!-- Mech AI -->
+    <button class="btn dock-btn" data-dock-btn data-action="mechai" aria-label="Mech AI">
+      <svg class="dock-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="7" width="16" height="12" rx="3" />
+        <circle cx="9" cy="13" r="1.5" />
+        <circle cx="15" cy="13" r="1.5" />
+        <path d="M12 7V3" />
+      </svg>
+    </button>
+
+    <!-- MAP -->
+    <button class="btn dock-btn" data-dock-btn data-action="map" aria-label="Mapa">
+      <svg class="dock-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6z" />
+        <path d="M9 4v14M15 6v14" />
+      </svg>
+    </button>
+
+    <!-- TOW -->
+    <button class="btn dock-btn" data-dock-btn data-action="tow" aria-label="Tow">
+      <svg class="dock-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="12" width="8" height="6" rx="1.5"/>
+        <circle cx="7" cy="19" r="2"/>
+        <circle cx="15" cy="19" r="2"/>
+        <path d="M11 12l5-6h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M19 6v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M19 13c0 .8-.6 1.5-1.4 1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Marketplace -->
+    <button class="btn dock-btn" data-dock-btn data-action="marketplace" aria-label="Marketplace">
+      <svg class="dock-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 7h18l-1 4H4L3 7z" />
+        <path d="M5 11v7h14v-7" />
+      </svg>
+    </button>
+
+    <!-- GarageX -->
+    <button class="btn dock-btn" data-dock-btn data-action="garagex" aria-label="Garagex">
+      <img class="dock-icon" src="https://beteranomotors.github.io/chrome/assets/garagex-icon.svg" alt="" />
+    </button>
+  </nav>
+</div>

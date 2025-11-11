@@ -1,0 +1,78 @@
+<!-- 🔝 Announcement bar (desktop) -->
+<div id="announcement-bar" role="region" aria-label="Avisos">
+  <span data-i18n="constructionNotice">🚧 Web en construcción 🚧</span>
+  <div class="announcement-links desktop-only">
+    <a href="#" data-i18n="faq">FAQ</a>
+    <a href="#" data-i18n="contact">Contacto</a>
+    <select id="lang-desktop" aria-label="Language">
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="it">Italiano</option>
+      <option value="nl">Nederlands</option>
+      <option value="pl">Polski</option>
+      <option value="hr">Hrvatski</option>
+      <option value="ja">日本語</option>
+      <option value="zh">中文</option>
+      <option value="ar">العربية</option>
+    </select>
+  </div>
+</div>
+
+<header id="site-header">
+  <div class="header-container">
+    <!-- Logo (izquierda) -->
+    <a href="/index.html" class="logo-link" aria-label="BETERANO">
+      <img class="logo" src="https://beteranomotors.github.io/chrome/assets/logo_header.svg" alt="BETERANO" />
+    </a>
+
+    <!-- Dock inline (centro) -->
+    <div class="bm-desktop-dock-row">
+      <div id="bm-dock-root" class="inline-dock" aria-label="Beterano dock"></div>
+    </div>
+
+    <!-- Zona derecha: login + hamburger -->
+    <div class="header-right">
+      <a href="#" id="login-link" class="login-emoji" title="Login" aria-label="Login">👤</a>
+      <button id="menu-toggle" class="hamburger" aria-label="Abrir menú" aria-controls="nav-panel" aria-expanded="false">
+        <span class="hamburger-icon">☰</span>
+        <span class="close-icon" aria-hidden="true">✕</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Panel de navegación (hamburguesa) -->
+  <nav id="nav-panel" class="btr-menu" aria-label="Main menu">
+    <ul class="nav-list">
+      <!-- Mismo contenido en móvil y escritorio -->
+      <li><a href="#" data-i18n="magazine">Magazine</a></li>
+      <li><a href="#" data-i18n="pricing">Pricing</a></li>
+      <li><a href="#" data-i18n="community">Comunidad</a></li>
+      <li><a href="#" data-i18n="shop">Shop</a></li>
+
+      <!-- Solo visible en móvil, porque en desktop está en la barra superior -->
+      <li class="mobile-only"><a href="#" data-i18n="contact">Contacto</a></li>
+      <li class="mobile-only"><a href="#" data-i18n="faq">FAQ</a></li>
+      <li class="mobile-only">
+        <label class="sr-only" for="lang-mobile">Language</label>
+        <select id="lang-mobile">
+          <option value="es">Español</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="it">Italiano</option>
+          <option value="nl">Nederlands</option>
+          <option value="pl">Polski</option>
+          <option value="hr">Hrvatski</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+          <option value="ar">العربية</option>
+        </select>
+      </li>
+
+      <!-- Login (sustituido por nombre cuando hay sesión) -->
+      <li class="mobile-only"><a href="#" id="menu-login" data-i18n="login">Iniciar sesión</a></li>
+    </ul>
+  </nav>
+</header>

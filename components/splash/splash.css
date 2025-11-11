@@ -1,0 +1,75 @@
+/* Pantalla completa sobre todo */
+#btr-splash {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;        /* negro Beterano */
+  display: grid;
+  place-items: center;
+  z-index: 99999;             /* por encima de header/map */
+  transition: opacity .6s ease, visibility .6s ease;
+}
+
+#btr-splash .logo-wrap {
+  width: min(420px, 70vw);
+  aspect-ratio: 1/1;
+}
+
+/* Estado oculto (fade out y clickable-through) */
+#btr-splash.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* SVG base */
+#btr-splash svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Paths animables: solo stroke, sin relleno */
+#btr-splash svg path,
+#btr-splash svg line,
+#btr-splash svg polyline,
+#btr-splash svg polygon {
+  fill: none !important;
+  stroke: #f5d84d;            /* amarillo Beterano (ajusta si usas variable) */
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.95;
+  /* El dasharray/offset se setea vía JS según longitud real */
+  animation: btr-line-draw 1.8s ease-in-out forwards;
+}
+
+/* Pequeño parpadeo al final */
+@keyframes btr-line-draw {
+  0%   { stroke-dashoffset: var(--dash, 1000); opacity: .6; }
+  70%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+/* “Pulso” cíclico opcional mientras carga (se aplica a todo el SVG) */
+#btr-splash.loading svg {
+  animation: btr-pulse 1.4s ease-in-out infinite alternate;
+}
+@keyframes btr-pulse {
+  from { transform: scale(0.98); filter: drop-shadow(0 0 0 rgba(245,216,77,.0)); }
+  to   { transform: scale(1.02); filter: drop-shadow(0 0 24px rgba(245,216,77,.2)); }
+}
+
+/* 🔁 Opción 4: dibujar ↔ borrar en bucle mientras carga */
+#btr-splash.loading svg path,
+#btr-splash.loading svg line,
+#btr-splash.loading svg polyline,
+#btr-splash.loading svg polygon {
+  animation: btr-line-draw-loop 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes btr-line-draw-loop {
+  0%   { stroke-dashoffset: var(--dash, 1000); opacity: .6; }
+  50%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}

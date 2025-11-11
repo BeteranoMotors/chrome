@@ -1,0 +1,10 @@
+{
+  "firebase": {
+    "apiKey": "XXXX",
+    "authDomain": "xxxx.firebaseapp.com",
+    "projectId": "xxxx",
+    "appId": "1:xxxx:web:xxxx",
+    "storageBucket": "xxxx.appspot.com"
+  },
+  "allowedOrigins": ["localhost", "beteranomotors.github.io"]
+}

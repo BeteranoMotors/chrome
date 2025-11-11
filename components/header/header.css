@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap');
+
+:root{
+  --header-offset: 0px;
+  --btr-logo-base-h: 20px;
+  --btr-logo-scale: 1.25;
+  --dock-btn: 56px;          /* cuadrado dock */
+  --dock-gap: 14px;          /* separación entre botones */
+}
+
+/* Base */
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{font-family:'Oswald',sans-serif}
+body.header-loaded #root{
+  min-height:calc(100dvh - var(--header-offset));
+  height:calc(100dvh - var(--header-offset));
+  overflow:hidden;
+}
+
+/* Announcement (desktop) */
+#announcement-bar{
+  background:#000;color:#fff;display:flex;justify-content:space-between;align-items:center;
+  padding:4px 10px;z-index:200;position:relative
+}
+.announcement-links a{color:#fff;text-decoration:none;margin-left:12px;font-weight:500}
+.announcement-links select{margin-left:12px;padding:2px 6px}
+
+/* Header */
+#site-header{background:#fff;border-bottom:1px solid #eee;position:relative;z-index:9999}
+.header-container{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:10px 16px
+}
+
+/* Logo */
+.logo-link{display:inline-flex;align-items:center;line-height:0}
+.logo{height:var(--btr-logo-base-h);transform-origin:left center;
+       transform:translateY(calc((1 - var(--btr-logo-scale))*50%)) scale(var(--btr-logo-scale))}
+
+/* Dock inline – centrado + botones cuadrados */
+.bm-desktop-dock-row{display:flex;justify-content:center}
+.inline-dock{display:flex;justify-content:center;align-items:center}
+.inline-dock .mobile-dock.dock--inline{display:flex;gap:var(--dock-gap);background:#fbe493;border-radius:14px;padding:6px 10px}
+.inline-dock .dock-btn{
+  width:var(--dock-btn);height:var(--dock-btn);
+  display:inline-grid;place-items:center;border-radius:999px;border:2px solid #222;background:#f8d95a;
+}
+
+/* Right zone */
+.header-right{display:flex;align-items:center;gap:12px}
+.login-emoji{font-size:1.4rem;text-decoration:none;color:#000}
+
+/* Hamburger */
+.hamburger{background:none;border:none;font-size:1.6rem;cursor:pointer;line-height:1}
+.hamburger .close-icon{display:none}
+.hamburger.is-open .hamburger-icon{display:none}
+.hamburger.is-open .close-icon{display:inline}
+
+/* Menú hamburguesa (panel) */
+.btr-menu{
+  position:fixed;right:12px;top:calc(var(--header-offset)); /* debajo del header real */
+  width:min(360px,92vw);max-height:calc(100dvh - var(--header-offset) - 16px);
+  background:#fff;border:1px solid #ddd;border-radius:16px;box-shadow:0 18px 60px rgba(0,0,0,.25);
+  overflow:auto;display:none;padding:14px;z-index:10000
+}
+.btr-menu.is-open{display:block}
+.nav-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.nav-list a{text-decoration:none;color:#000;font-size:1.05rem}
+
+/* Overlay para cerrar al clicar fuera */
+.menu-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.15);backdrop-filter:blur(2px);z-index:9998;display:none
+}
+.menu-overlay.is-open{display:block}
+
+/* Responsive */
+.desktop-only{display:none}
+.mobile-only{display:block}
+
+@media (min-width:769px){
+  .desktop-only{display:inline-flex}
+  .mobile-only{display:none !important}
+  /* Menú flotante ya está configurado arriba */
+}
+
+/* Accesibilidad */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}

@@ -1,0 +1,145 @@
+/* beterano-web-chrome/components/auth/login_modal.css */
+
+/* ===== Backdrop (oscurece + blur) ===== */
+.btr-auth__backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99998;
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+.btr-auth__backdrop.is-open{ opacity: 1; }
+
+/* ===== Modal centrado ===== */
+.btr-auth__modal{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: min(520px, 92vw);
+  max-height: min(86vh, 680px);
+  background: #111;
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.45);
+  padding: 20px;
+  overflow: hidden;                /* nada puede salir del marco */
+  z-index: 99999;                  /* por encima del backdrop */
+  contain: layout paint;           /* evita desbordes raros */
+}
+
+/* Harden: todo respeta el ancho del modal */
+.btr-auth__modal *{
+  box-sizing: border-box;          /* padding/border cuentan en el ancho */
+  max-width: 100%;                 /* nunca crecer más que el contenedor */
+  font: inherit;
+}
+
+/* ===== Cabecera ===== */
+.btr-auth__head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+.btr-auth__title{ font-weight:700; }
+
+.btr-auth__close{
+  border:none;
+  background:#222;
+  color:#eee;
+  border-radius:10px;
+  padding:6px 10px;
+  cursor:pointer;
+}
+
+/* ===== Tabs ===== */
+.btr-auth__tabs{
+  display:flex;
+  gap:8px;
+  margin:10px 0 6px;
+  overflow: hidden;
+}
+.btr-auth__tab{
+  border:none;
+  border-radius:999px;
+  padding:8px 12px;
+  background:#222;
+  color:#eee;
+  cursor:pointer;
+  white-space: nowrap;
+}
+.btr-auth__tab.is-active{
+  background:#f5d84d;
+  color:#111;
+  font-weight:700;
+}
+
+/* ===== Cuerpo ===== */
+.btr-auth__panel{ display:none; }
+.btr-auth__panel.is-active{ display:block; }
+
+/* Contenedor scrolleable interno para pantallas pequeñas */
+.btr-auth__body{
+  max-height: calc(min(86vh, 680px) - 120px);
+  overflow: auto;
+  padding-right: 2px; /* evita salto por scrollbar */
+}
+
+/* ===== Campos ===== */
+.btr-auth__input{
+  display:block;
+  width:100%;
+  max-width:100%;
+  margin:6px 0;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #333;
+  background:#1b1b1b;
+  color:#fff;
+  outline: none;
+  min-height: 38px;
+}
+.btr-auth__input:focus{
+  border-color:#555;
+  box-shadow: 0 0 0 2px rgba(245,216,77,.35); /* glow sin desplazar */
+}
+
+/* ===== Botonera ===== */
+.btr-auth__row{
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  margin-top:12px;
+  flex-wrap: wrap;
+}
+.btr-auth__btn{
+  border:none;
+  border-radius:10px;
+  padding:10px 14px;
+  background:#f5d84d;
+  color:#111;
+  font-weight:700;
+  cursor:pointer;
+}
+.btr-auth__btn--secondary{
+  border:none;
+  border-radius:10px;
+  padding:10px 14px;
+  background:#222;
+  color:#eee;
+  cursor:pointer;
+}
+
+/* ===== Mensajes ===== */
+.btr-auth__error{ color:#f77; margin-top:8px; min-height:1em; }
+.btr-auth__note{ opacity:.7; font-size:.9em; margin-top:12px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 480px){
+  .btr-auth__modal{ padding:16px; width: min(560px, 94vw); }
+  .btr-auth__row{ justify-content: space-between; }
+}

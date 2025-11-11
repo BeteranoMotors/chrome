@@ -1,0 +1,25 @@
+<div class="btr-auth__backdrop" data-btr-auth role="dialog" aria-modal="true">
+  <div class="btr-auth__modal" role="document">
+    <div class="btr-auth__head">
+      <h3>Iniciar sesión</h3>
+      <button class="btr-auth__close" data-btr-auth-close>&times;</button>
+    </div>
+    <div class="btr-auth__tabs">
+      <button data-btr-tab="google" class="is-active">Google</button>
+      <button data-btr-tab="email">Email</button>
+    </div>
+    <div class="btr-auth__panel" data-btr-panel="google">
+      <button class="btr-primary" data-btr-google>Continuar con Google</button>
+    </div>
+    <div class="btr-auth__panel is-hidden" data-btr-panel="email">
+      <input type="email" placeholder="Email" data-btr-email />
+      <input type="password" placeholder="Contraseña" data-btr-pass />
+      <div class="btr-auth__row">
+        <button class="btr-primary" data-btr-email-login>Entrar</button>
+        <button data-btr-email-register>Crear cuenta</button>
+      </div>
+    </div>
+    <div class="btr-auth__error" data-btr-error></div>
+    <p class="btr-auth__note">Usamos cookies de sesión de Firebase Auth.</p>
+  </div>
+</div>

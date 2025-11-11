@@ -1,0 +1,20 @@
+{
+  "firebase": {
+    "dev": {
+      "apiKey": "AIzaSyBQPN4HpDvKb11HQ04kbAzNtaFBG10xH5w",
+      "authDomain": "beterano-core-dev.firebaseapp.com",
+      "projectId": "beterano-core-dev",
+      "storageBucket": "beterano-core-dev.firebasestorage.app",
+      "messagingSenderId": "995412800723",
+      "appId": "1:995412800723:web:a5fc247b76e0528a49d026"
+    },
+    "prod": {
+      "apiKey": "AIzaSyDFWZFM4LSmDX58562trQGrxXx2Bwkho8w",
+      "authDomain": "beterano-core-prod.firebaseapp.com",
+      "projectId": "beterano-core-prod",
+      "storageBucket": "beterano-core-prod.firebasestorage.app",
+      "messagingSenderId": "1021865231769",
+      "appId": "1:1021865231769:web:c18b5521b3b8924874bf08"
+    }
+  }
+}
