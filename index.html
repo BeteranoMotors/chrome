@@ -18,14 +18,15 @@
         display: grid;
         place-items: center;
         background:
-          radial-gradient(circle at 50% 48%, rgba(245, 216, 77, 0.12), transparent 32%),
-          linear-gradient(180deg, #080808 0%, #0a0a0a 100%);
+          radial-gradient(circle at 50% 46%, rgba(245, 216, 77, 0.34) 0%, rgba(245, 216, 77, 0.16) 20%, rgba(245, 216, 77, 0.04) 42%, transparent 62%),
+          radial-gradient(circle at 50% 45%, rgba(255, 250, 214, 0.08), transparent 48%),
+          linear-gradient(180deg, #15120c 0%, #0d0d0b 52%, #080808 100%);
         z-index: 100500;
         opacity: 1;
         visibility: visible;
         transition:
-          opacity 0.7s ease,
-          visibility 0.7s ease;
+          opacity 0.95s ease,
+          visibility 0.95s ease;
       }
 
       #btr-startup-splash.is-hidden {
@@ -35,11 +36,11 @@
       }
 
       .btr-startup-splash__logo-wrap {
-        width: min(440px, 74vw);
+        width: min(520px, 80vw);
         aspect-ratio: 1 / 1;
         display: grid;
         place-items: center;
-        animation: btr-splash-pulse 1.7s ease-in-out infinite alternate;
+        animation: btr-splash-pulse 2.15s ease-in-out infinite alternate;
       }
 
       .btr-startup-splash__logo {
@@ -47,7 +48,9 @@
         height: 100%;
         object-fit: contain;
         display: block;
-        filter: drop-shadow(0 0 36px rgba(245, 216, 77, 0.16));
+        filter:
+          brightness(0) saturate(100%) invert(87%) sepia(28%) saturate(1026%) hue-rotate(355deg) brightness(102%) contrast(95%)
+          drop-shadow(0 0 64px rgba(245, 216, 77, 0.38));
       }
 
       @keyframes btr-splash-pulse {
@@ -64,15 +67,15 @@
     </style>
     <script>
       (function setupBeteranoStartupSplash() {
-        const MIN_SHOW_MS = 1400;
-        const HARD_MAX_MS = 6500;
+        const MIN_SHOW_MS = 2600;
+        const HARD_MAX_MS = 8000;
         const startedAt = performance?.now?.() ?? Date.now();
 
         const hideSplash = () => {
           const splash = document.getElementById("btr-startup-splash");
           if (!splash || splash.classList.contains("is-hidden")) return;
           splash.classList.add("is-hidden");
-          window.setTimeout(() => splash.remove(), 750);
+          window.setTimeout(() => splash.remove(), 1050);
         };
 
         const scheduleHide = () => {
