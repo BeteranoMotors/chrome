@@ -1,0 +1,201 @@
+[
+  {
+    "id": "evt-mercedes-t1-navarra-2026",
+    "type": "event",
+    "status": "confirmed",
+    "theme": "Mercedes T1",
+    "title": "KDD Mercedes T1 Navarra 2026",
+    "description": "Encuentro de Mercedes T1 con ruta corta, zona de parking y espacio para stands ligeros.",
+    "dateStart": "2026-05-22",
+    "dateEnd": "2026-05-24",
+    "proposedDates": [],
+    "vehicleTags": ["Mercedes T1", "Camper", "Motorhomes"],
+    "location": {
+      "name": "Area de autocaravanas de Pamplona",
+      "city": "Pamplona",
+      "country": "Espana",
+      "precision": "point",
+      "point": { "lat": 42.8187, "lng": -1.6447 }
+    },
+    "organizer": "Comunidad Mercedes T1",
+    "needsVolunteers": true,
+    "allowsStands": true,
+    "tshirtCampaign": true,
+    "participants": [
+      {
+        "id": "resp-navarra-01",
+        "name": "Ruben",
+        "vehicle": "Mercedes T1 308D",
+        "availableDates": ["2026-05-22", "2026-05-23", "2026-05-24"],
+        "canCollaborate": true,
+        "serviceOffer": "Foto / video",
+        "wantsStand": false,
+        "wantsTshirt": true,
+        "tshirtSize": "L",
+        "locationSuggestion": "",
+        "notes": "Puedo ayudar con ruta y fotos."
+      },
+      {
+        "id": "resp-navarra-02",
+        "name": "Ana",
+        "vehicle": "Mercedes T1 James Cook",
+        "availableDates": ["2026-05-23", "2026-05-24"],
+        "canCollaborate": false,
+        "serviceOffer": "",
+        "wantsStand": true,
+        "wantsTshirt": true,
+        "tshirtSize": "M",
+        "locationSuggestion": "",
+        "notes": "Montaria un stand pequeño con accesorios."
+      }
+    ]
+  },
+  {
+    "id": "ini-mercedes-t1-norte-primavera",
+    "type": "initiative",
+    "status": "initiative",
+    "theme": "Mercedes T1",
+    "title": "Iniciativa T1 zona norte (primavera)",
+    "description": "Recopilar disponibilidad y posibles localizaciones para una primera KDD en el norte.",
+    "dateStart": "",
+    "dateEnd": "",
+    "proposedDates": ["2026-04-17", "2026-04-18", "2026-04-24", "2026-04-25"],
+    "vehicleTags": ["Mercedes T1"],
+    "location": {
+      "name": "",
+      "city": "",
+      "country": "Espana",
+      "precision": "unknown",
+      "point": null
+    },
+    "organizer": "Grupo WhatsApp Mercedes T1",
+    "needsVolunteers": true,
+    "allowsStands": true,
+    "tshirtCampaign": true,
+    "participants": [
+      {
+        "id": "resp-norte-01",
+        "name": "Miguel",
+        "vehicle": "Mercedes T1 407D",
+        "availableDates": ["2026-04-18", "2026-04-25"],
+        "canCollaborate": true,
+        "serviceOffer": "Musica / sonido",
+        "wantsStand": false,
+        "wantsTshirt": true,
+        "tshirtSize": "XL",
+        "locationSuggestion": "Cantabria (zona costera con parking amplio)",
+        "notes": "Puedo traer equipo de sonido basico."
+      }
+    ]
+  },
+  {
+    "id": "evt-furgo-clasica-sevilla-2026",
+    "type": "event",
+    "status": "planning",
+    "theme": "Furgonetas Clasicas",
+    "title": "Concentracion Furgo Clasica Sevilla",
+    "description": "Evento multi-modelo con mercado de piezas, charla y caravana urbana.",
+    "dateStart": "2026-03-14",
+    "dateEnd": "2026-03-15",
+    "proposedDates": [],
+    "vehicleTags": ["Mercedes T1", "VW T3", "Transit MK2"],
+    "location": {
+      "name": "Recinto ferial provisional",
+      "city": "Sevilla",
+      "country": "Espana",
+      "precision": "point",
+      "point": { "lat": 37.3891, "lng": -5.9845 }
+    },
+    "organizer": "Furgo Clasica Sur",
+    "needsVolunteers": true,
+    "allowsStands": true,
+    "tshirtCampaign": false,
+    "participants": []
+  },
+  {
+    "id": "ini-vw-t3-costa-brava",
+    "type": "initiative",
+    "status": "planning",
+    "theme": "VW T3",
+    "title": "Pre-KDD VW T3 Costa Brava",
+    "description": "Ya hay zona candidata. Falta validar asistencia y permisos.",
+    "dateStart": "2026-06-12",
+    "dateEnd": "2026-06-14",
+    "proposedDates": ["2026-06-12", "2026-06-13", "2026-06-14"],
+    "vehicleTags": ["VW T3", "Westfalia"],
+    "location": {
+      "name": "Parcela candidata junto a la costa",
+      "city": "Palamos",
+      "country": "Espana",
+      "precision": "point",
+      "point": { "lat": 41.8514, "lng": 3.1291 }
+    },
+    "organizer": "Comunidad T3 Mediterraneo",
+    "needsVolunteers": true,
+    "allowsStands": false,
+    "tshirtCampaign": true,
+    "participants": [
+      {
+        "id": "resp-t3-01",
+        "name": "Carla",
+        "vehicle": "VW T3 Westfalia",
+        "availableDates": ["2026-06-13", "2026-06-14"],
+        "canCollaborate": true,
+        "serviceOffer": "Diseño cartel",
+        "wantsStand": false,
+        "wantsTshirt": true,
+        "tshirtSize": "S",
+        "locationSuggestion": "",
+        "notes": "Puedo preparar cartel y artes para redes."
+      }
+    ]
+  },
+  {
+    "id": "evt-mercedes-t1-madrid-otono",
+    "type": "event",
+    "status": "draft",
+    "theme": "Mercedes T1",
+    "title": "Mesa de trabajo T1 Madrid (organizacion otono)",
+    "description": "Sesion de preparacion para evento grande. Formato reducido pero abierto a colaboradores.",
+    "dateStart": "2026-09-19",
+    "dateEnd": "2026-09-19",
+    "proposedDates": [],
+    "vehicleTags": ["Mercedes T1"],
+    "location": {
+      "name": "Nave colaborativa",
+      "city": "Madrid",
+      "country": "Espana",
+      "precision": "point",
+      "point": { "lat": 40.4168, "lng": -3.7038 }
+    },
+    "organizer": "Equipo organizacion T1",
+    "needsVolunteers": true,
+    "allowsStands": false,
+    "tshirtCampaign": true,
+    "participants": []
+  },
+  {
+    "id": "ini-clasicos-noroeste-sin-sede",
+    "type": "initiative",
+    "status": "initiative",
+    "theme": "Clasicos 80s / 90s",
+    "title": "Iniciativa multi-modelo noroeste (sin sede)",
+    "description": "Buscamos ciudad anfitriona y voluntarios para organizar un evento regional.",
+    "dateStart": "",
+    "dateEnd": "",
+    "proposedDates": ["2026-07-04", "2026-07-05", "2026-07-11", "2026-07-12"],
+    "vehicleTags": ["Mercedes T1", "VW T3", "Transit", "J7"],
+    "location": {
+      "name": "",
+      "city": "",
+      "country": "Espana",
+      "precision": "unknown",
+      "point": null
+    },
+    "organizer": "Beterano Motors community",
+    "needsVolunteers": true,
+    "allowsStands": true,
+    "tshirtCampaign": true,
+    "participants": []
+  }
+]
