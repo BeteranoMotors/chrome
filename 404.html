@@ -138,13 +138,20 @@
         const MIN_SHOW_MS = 2600;
         const HARD_MAX_MS = 8000;
         const startedAt = performance?.now?.() ?? Date.now();
-        const splash = document.getElementById("btr-startup-splash");
-        const progressFill = document.getElementById("btr-startup-progress-fill");
-        const progressLabel = document.getElementById("btr-startup-progress-label");
+        let splash = null;
+        let progressFill = null;
+        let progressLabel = null;
         let rafId = 0;
         let currentProgress = 0;
 
+        const resolveElements = () => {
+          if (!splash) splash = document.getElementById("btr-startup-splash");
+          if (!progressFill) progressFill = document.getElementById("btr-startup-progress-fill");
+          if (!progressLabel) progressLabel = document.getElementById("btr-startup-progress-label");
+        };
+
         const setProgress = (value) => {
+          resolveElements();
           currentProgress = Math.max(currentProgress, Math.min(100, value));
           if (progressFill) progressFill.style.width = currentProgress + "%";
           if (progressLabel) progressLabel.textContent = Math.round(currentProgress) + "%";
@@ -158,6 +165,7 @@
         };
 
         const hideSplash = () => {
+          resolveElements();
           if (!splash || splash.classList.contains("is-hidden")) return;
           window.cancelAnimationFrame(rafId);
           setProgress(100);
