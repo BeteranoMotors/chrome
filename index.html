@@ -18,9 +18,9 @@
         display: grid;
         place-items: center;
         background:
-          radial-gradient(circle at 50% 46%, rgba(245, 216, 77, 0.34) 0%, rgba(245, 216, 77, 0.16) 20%, rgba(245, 216, 77, 0.04) 42%, transparent 62%),
-          radial-gradient(circle at 50% 45%, rgba(255, 250, 214, 0.08), transparent 48%),
-          linear-gradient(180deg, #15120c 0%, #0d0d0b 52%, #080808 100%);
+          radial-gradient(circle at 50% 42%, rgba(245, 216, 77, 0.24) 0%, rgba(245, 216, 77, 0.11) 18%, rgba(245, 216, 77, 0.03) 40%, transparent 60%),
+          radial-gradient(circle at 50% 45%, rgba(255, 250, 214, 0.11), transparent 48%),
+          linear-gradient(180deg, #15120c 0%, #0d0d0b 48%, #090909 100%);
         z-index: 100500;
         opacity: 1;
         visibility: visible;
@@ -35,9 +35,18 @@
         pointer-events: none;
       }
 
+      .btr-startup-splash__stack {
+        width: min(460px, calc(100vw - 48px));
+        display: grid;
+        justify-items: center;
+        gap: 18px;
+        text-align: center;
+      }
+
       .btr-startup-splash__logo-wrap {
-        width: min(520px, 80vw);
-        aspect-ratio: 1 / 1;
+        width: min(250px, 42vw);
+        min-width: 168px;
+        aspect-ratio: 1 / 1.08;
         display: grid;
         place-items: center;
         animation: btr-splash-pulse 2.15s ease-in-out infinite alternate;
@@ -49,8 +58,67 @@
         object-fit: contain;
         display: block;
         filter:
-          brightness(0) saturate(100%) invert(87%) sepia(28%) saturate(1026%) hue-rotate(355deg) brightness(102%) contrast(95%)
-          drop-shadow(0 0 64px rgba(245, 216, 77, 0.38));
+          brightness(0) saturate(100%) invert(87%) sepia(28%) saturate(1026%) hue-rotate(355deg) brightness(105%) contrast(96%)
+          drop-shadow(0 0 34px rgba(245, 216, 77, 0.24));
+      }
+
+      .btr-startup-splash__brand {
+        display: grid;
+        gap: 5px;
+      }
+
+      .btr-startup-splash__brand strong,
+      .btr-startup-splash__brand span {
+        color: #f7e2a2;
+        text-shadow: 0 0 20px rgba(245, 216, 77, 0.18);
+      }
+
+      .btr-startup-splash__brand strong {
+        font:
+          700 clamp(1.8rem, 3vw, 2.6rem) / 1.04 "Segoe UI", Arial, sans-serif;
+        letter-spacing: 0.26em;
+      }
+
+      .btr-startup-splash__brand span {
+        font:
+          500 clamp(1rem, 1.7vw, 1.28rem) / 1.2 "Segoe UI", Arial, sans-serif;
+        letter-spacing: 0.18em;
+        text-transform: lowercase;
+      }
+
+      .btr-startup-splash__progress {
+        width: min(240px, 56vw);
+        display: grid;
+        gap: 8px;
+        justify-items: center;
+      }
+
+      .btr-startup-splash__progress-track {
+        width: 100%;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(255, 240, 188, 0.13);
+        overflow: hidden;
+        box-shadow:
+          inset 0 0 0 1px rgba(245, 216, 77, 0.08),
+          0 0 26px rgba(245, 216, 77, 0.07);
+      }
+
+      .btr-startup-splash__progress-fill {
+        display: block;
+        width: 0%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #d9b84a 0%, #ffe48b 54%, #f6ce4d 100%);
+        box-shadow: 0 0 18px rgba(245, 216, 77, 0.38);
+        transition: width 0.16s linear;
+      }
+
+      .btr-startup-splash__progress-label {
+        color: rgba(255, 240, 188, 0.82);
+        font:
+          600 0.88rem / 1 "Segoe UI", Arial, sans-serif;
+        letter-spacing: 0.22em;
       }
 
       @keyframes btr-splash-pulse {
@@ -70,10 +138,29 @@
         const MIN_SHOW_MS = 2600;
         const HARD_MAX_MS = 8000;
         const startedAt = performance?.now?.() ?? Date.now();
+        const splash = document.getElementById("btr-startup-splash");
+        const progressFill = document.getElementById("btr-startup-progress-fill");
+        const progressLabel = document.getElementById("btr-startup-progress-label");
+        let rafId = 0;
+        let currentProgress = 0;
+
+        const setProgress = (value) => {
+          currentProgress = Math.max(currentProgress, Math.min(100, value));
+          if (progressFill) progressFill.style.width = currentProgress + "%";
+          if (progressLabel) progressLabel.textContent = Math.round(currentProgress) + "%";
+        };
+
+        const tickProgress = () => {
+          const elapsed = (performance?.now?.() ?? Date.now()) - startedAt;
+          const nextValue = Math.min(94, (elapsed / MIN_SHOW_MS) * 94);
+          setProgress(nextValue);
+          rafId = window.requestAnimationFrame(tickProgress);
+        };
 
         const hideSplash = () => {
-          const splash = document.getElementById("btr-startup-splash");
           if (!splash || splash.classList.contains("is-hidden")) return;
+          window.cancelAnimationFrame(rafId);
+          setProgress(100);
           splash.classList.add("is-hidden");
           window.setTimeout(() => splash.remove(), 1050);
         };
@@ -83,6 +170,8 @@
           window.setTimeout(hideSplash, Math.max(0, MIN_SHOW_MS - elapsed));
         };
 
+        setProgress(6);
+        rafId = window.requestAnimationFrame(tickProgress);
         window.addEventListener("btr:app-ready", scheduleHide, { once: true });
         window.setTimeout(hideSplash, HARD_MAX_MS);
       })();
@@ -92,13 +181,25 @@
   </head>
   <body>
     <div id="btr-startup-splash" aria-hidden="true">
-      <div class="btr-startup-splash__logo-wrap">
-        <img
-          class="btr-startup-splash__logo"
-          src="/logo_loading.svg"
-          alt="Beterano"
-          fetchpriority="high"
-        />
+      <div class="btr-startup-splash__stack">
+        <div class="btr-startup-splash__logo-wrap">
+          <img
+            class="btr-startup-splash__logo"
+            src="/logo_loading.svg"
+            alt="Beterano"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="btr-startup-splash__brand">
+          <strong>BETERANO</strong>
+          <span>barn find hunters</span>
+        </div>
+        <div class="btr-startup-splash__progress" aria-hidden="true">
+          <div class="btr-startup-splash__progress-track">
+            <span class="btr-startup-splash__progress-fill" id="btr-startup-progress-fill"></span>
+          </div>
+          <span class="btr-startup-splash__progress-label" id="btr-startup-progress-label">0%</span>
+        </div>
       </div>
     </div>
     <div id="root"></div>
