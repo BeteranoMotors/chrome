@@ -2,10 +2,15 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- interactive-widget=overlays-content: al abrir el teclado, el viewport de
+         layout NO encoge, así que la app no se desplaza entera. El teclado se
+         superpone y solo la hoja flotante se recoloca, siguiendo al visualViewport
+         vía --go-vvt/--go-vvh (ver App.jsx y .go-fs). Sin esto, Android usa
+         resizes-content por defecto y arrastra toda la pantalla hacia arriba. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=overlays-content" />
     <title>Beterano GO</title>
-    <script type="module" crossorigin src="/apps/go/assets/index-CgEu4_OQ.js"></script>
-    <link rel="stylesheet" crossorigin href="/apps/go/assets/index-B0v0-yYT.css">
+    <script type="module" crossorigin src="/apps/go/assets/index-Sf2wvZz9.js"></script>
+    <link rel="stylesheet" crossorigin href="/apps/go/assets/index-DKSmZ1FQ.css">
   </head>
   <body>
     <div id="root"></div>
