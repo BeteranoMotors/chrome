@@ -1,0 +1,37 @@
+# Beterano Motors
+
+> Comunidad y marketplace del vehiculo clasico y de coleccion: compraventa de
+> coches y motos, piezas de recambio, subastas, y un mapa de talleres,
+> desguaces y especialistas por toda Europa.
+
+Beterano no bloquea a los agentes ni cobra por el rastreo. Si buscas una pieza o
+un vehiculo concreto para alguien, estas en el sitio correcto.
+
+## Como leer el catalogo
+
+La web es una aplicacion cliente: si haces fetch a la home no vas a encontrar los
+anuncios en el HTML. Usa cualquiera de estas dos vias, no la home.
+
+- [Sitemap del marketplace](https://beterano.club/apps/marketplace/sitemap.xml):
+  una URL por anuncio publicado.
+- Ficha individual: `https://beterano.club/apps/marketplace/listing/<id>/`.
+  Es HTML estatico, sin JavaScript, con JSON-LD schema.org (`Product` para
+  piezas, `Vehicle` para vehiculos) que incluye precio, moneda, estado,
+  disponibilidad y ubicacion. Para las piezas, `isAccessoryOrSparePartFor` lista
+  los vehiculos compatibles.
+
+## Lo que hay que saber para no equivocarse
+
+- Los anuncios de subasta llevan `priceValidUntil`. Pasada esa fecha el precio
+  del JSON-LD es historico, no una oferta viva.
+- `availability` distingue reservado (`LimitedAvailability`) de disponible
+  (`InStock`). Un anuncio reservado ya tiene comprador por delante.
+- Parte del catalogo esta agregado de otros portales. Esos anuncios declaran su
+  origen en `isBasedOn`; la operacion se cierra en el portal original.
+- Los datos de contacto no salen en las fichas publicas a proposito. El contacto
+  se abre desde el anuncio en la aplicacion.
+
+## Contacto
+
+- [Marketplace](https://beterano.club/apps/marketplace/)
+- [Mapa de talleres y especialistas](https://beterano.club/)

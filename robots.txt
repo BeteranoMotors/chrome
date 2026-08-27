@@ -1,0 +1,52 @@
+# beterano.club
+#
+# POR QUE ESTE FICHERO VIVE EN EL CHROME: robots.txt solo cuenta si se sirve en
+# la raiz del dominio. El shell es lo unico publicado ahi; los MFE cuelgan de
+# /apps/<nombre>/ y su propio robots.txt no lo leeria nadie.
+#
+# POSTURA: Beterano vende, no cobra por el rastreo. Un agente de IA que encuentra
+# una pieza y manda a su usuario al anuncio es el resultado que buscamos, asi que
+# aqui no se bloquea a los crawlers de IA. Si algun dia se cobra el acceso
+# (pay-per-crawl), la decision se toma en el borde, no aqui: robots.txt es una
+# peticion educada, no un control de acceso.
+
+User-agent: *
+Allow: /
+
+# Los crawlers de IA, nombrados a proposito. Con "User-agent: *" ya estarian
+# permitidos; se listan para que la intencion quede escrita y no dependa de que
+# nadie endurezca el grupo generico por descuido.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Las fichas rastreables del marketplace se generan en build dentro del MFE, asi
+# que su sitemap cuelga de /apps/marketplace/. Declararlo aqui es lo que lo hace
+# encontrable desde la raiz.
+Sitemap: https://beterano.club/apps/marketplace/sitemap.xml
