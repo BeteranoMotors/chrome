@@ -121,6 +121,44 @@
         letter-spacing: 0.22em;
       }
 
+      /* Variante GO. Entrar por go.beterano.club acaba aqui: Cloudflare redirige
+         a /go y este splash es lo primero que se pinta. Con la portada dorada de
+         Motors se veian tres pantallas seguidas (portada de GO, dorada, GO); con
+         la de GO es una sola, continuada. */
+      #btr-startup-splash.is-go {
+        background: #76d497;
+      }
+
+      .is-go .btr-startup-splash__logo-wrap {
+        width: min(78vw, 340px);
+        min-width: 0;
+        max-height: 60vh;
+        aspect-ratio: auto;
+      }
+
+      .is-go .btr-startup-splash__logo {
+        filter: none;
+      }
+
+      .is-go .btr-startup-splash__brand {
+        display: none;
+      }
+
+      .is-go .btr-startup-splash__progress-track {
+        background: rgba(12, 12, 12, 0.26);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+      }
+
+      .is-go .btr-startup-splash__progress-fill {
+        background: #fff;
+        box-shadow: 0 0 18px rgba(255, 255, 255, 0.45);
+      }
+
+      .is-go .btr-startup-splash__progress-label {
+        color: #fff;
+        text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
+      }
+
       @keyframes btr-splash-pulse {
         from {
           transform: scale(0.97);
@@ -178,14 +216,38 @@
           window.setTimeout(hideSplash, Math.max(0, MIN_SHOW_MS - elapsed));
         };
 
+        // La URL canonica es /{idioma}/{seccion}, y el idioma es opcional. "go"
+        // mide dos letras igual que un idioma, asi que hay que mirar la lista de
+        // verdad en vez de contar caracteres.
+        const LOCALES = ["es", "en", "de", "fr", "it", "tr", "nl", "pl", "hr", "ja", "zh", "ar"];
+        const readSection = () => {
+          const segments = String(window.location.pathname || "")
+            .toLowerCase()
+            .split("/")
+            .filter(Boolean);
+          return (LOCALES.indexOf(segments[0]) >= 0 ? segments[1] : segments[0]) || "";
+        };
+
+        const applyGoBranding = () => {
+          if (readSection() !== "go") return;
+          resolveElements();
+          if (splash) splash.classList.add("is-go");
+          const logo = document.getElementById("btr-startup-logo");
+          // Es la misma imagen que ya ha pintado la portada de salida del shell,
+          // asi que en ese camino viene de cache y el cambio no parpadea.
+          if (logo) logo.src = "/splash-go.png";
+        };
+
+        applyGoBranding();
         setProgress(6);
         rafId = window.requestAnimationFrame(tickProgress);
+        document.addEventListener("DOMContentLoaded", applyGoBranding, { once: true });
         window.addEventListener("btr:app-ready", scheduleHide, { once: true });
         window.setTimeout(hideSplash, HARD_MAX_MS);
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-BOBqh_J-.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-TT-l3q6O.css">
+    <script type="module" crossorigin src="/assets/index-BzV7bjWJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BywxTOzq.css">
   </head>
   <body>
     <div id="btr-startup-splash" aria-hidden="true">
@@ -193,6 +255,7 @@
         <div class="btr-startup-splash__logo-wrap">
           <img
             class="btr-startup-splash__logo"
+            id="btr-startup-logo"
             src="/logo_loading.svg"
             alt="Beterano"
             fetchpriority="high"
@@ -210,6 +273,6 @@
         </div>
       </div>
     </div>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>
